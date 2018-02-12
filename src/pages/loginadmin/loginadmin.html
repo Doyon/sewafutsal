@@ -1,0 +1,45 @@
+<!--
+  Generated template for the LoginadminPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <!-- <ion-navbar>
+    <ion-title>loginadmin</ion-title>
+  </ion-navbar> -->
+
+</ion-header>
+
+
+<ion-content padding>
+  <br><br>
+    <h4 text-center>LOGIN ADMIN</h4>
+
+    <form [formGroup]="adminForm" (submit)="loginAdmin()" novalidate>
+  
+      <ion-item>
+        <ion-label stacked>Email</ion-label>
+        <ion-input formControlName="email" type="email" placeholder="Email"
+          [class.invalid]="!adminForm.controls.email.valid && adminForm.controls.email.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!adminForm.controls.email.valid  && adminForm.controls.email.dirty">
+        <p>Please enter a valid email.</p>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input formControlName="password" type="password" placeholder="Password"
+          [class.invalid]="!adminForm.controls.password.valid && adminForm.controls.password.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!adminForm.controls.password.valid  && adminForm.controls.password.dirty">
+        <p>Your password needs more than 6 characters.</p>
+      </ion-item>
+  
+      <button color="custom" ion-button block type="submit">
+        Masuk
+      </button>
+  
+    </form>
+</ion-content>

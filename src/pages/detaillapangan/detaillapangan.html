@@ -1,0 +1,90 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{lap.nama | uppercase}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img [src]="lap.photo"/>
+  <h4>{{lap.nama | uppercase}}</h4>
+  <hr>
+  <ion-list>
+      <ion-item>
+        <ion-icon name="call" item-start></ion-icon>
+        {{telp}}
+      </ion-item>
+      <ion-item>
+        <ion-icon name="ios-cash-outline" item-start></ion-icon>
+        {{lap.harga1 | currency:"Rp. "}} (Pagi - Sore)
+      </ion-item>
+      <ion-item>
+        <ion-icon name="cash" item-start></ion-icon>
+        {{lap.harga2 | currency:"Rp. "}} (Malam)
+      </ion-item>
+  </ion-list>
+  <hr>
+  <h6>Jadwal Pemesanan Lapangan</h6>
+  <hr>
+  <ion-grid>
+      <ion-row>
+        <ion-col col-4><b>Pemesan</b></ion-col>
+        <ion-col col-4><b>Tanggal</b></ion-col>
+        <ion-col col-4><b>Waktu</b></ion-col>
+      </ion-row>
+      <ion-row *ngFor="let pesan of pesanan | async">
+          <ion-col col-4>{{pesan.pemesan}}</ion-col>
+          <ion-col col-4>{{pesan.tanggal}}</ion-col>
+          <ion-col col-4>{{pesan.waktu}}</ion-col>
+      </ion-row>
+  </ion-grid>
+  
+  <hr>
+  <h6>Pesan Lapangan</h6>
+  <!-- <ion-item>
+    <ion-label>Waktu</ion-label>
+    <ion-datetime displayFormat="H" [(ngModel)]="time"></ion-datetime>
+  </ion-item> -->
+  <ion-list>
+    <ion-item>
+      <ion-label>Waktu</ion-label>
+      <ion-select [(ngModel)]="time">
+        <ion-option value="00:00">00:00</ion-option>
+        <ion-option value="01:00">01:00</ion-option>
+        <ion-option value="02:00">02:00</ion-option>
+        <ion-option value="03:00">03:00</ion-option>
+        <ion-option value="04:00">04:00</ion-option>
+        <ion-option value="05:00">05:00</ion-option>
+        <ion-option value="06:00">06:00</ion-option>
+        <ion-option value="07:00">07:00</ion-option>
+        <ion-option value="08:00">08:00</ion-option>
+        <ion-option value="09:00">09:00</ion-option>
+        <ion-option value="10:00">10:00</ion-option>
+        <ion-option value="11:00">11:00</ion-option>
+        <ion-option value="12:00">12:00</ion-option>
+        <ion-option value="13:00">13:00</ion-option>
+        <ion-option value="14:00">14:00</ion-option>
+        <ion-option value="15:00">15:00</ion-option>
+        <ion-option value="16:00">16:00</ion-option>
+        <ion-option value="17:00">17:00</ion-option>
+        <ion-option value="18:00">18:00</ion-option>
+        <ion-option value="19:00">19:00</ion-option>
+        <ion-option value="20:00">20:00</ion-option>
+        <ion-option value="21:00">21:00</ion-option>
+        <ion-option value="22:00">22:00</ion-option>
+        <ion-option value="23:00">23:00</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
+  <ion-item>
+    <ion-label>Tanggal</ion-label>
+    <ion-datetime displayFormat="DDDD, D MMMM YYYY" [(ngModel)]="date"></ion-datetime>
+  </ion-item>
+
+  <button color="custom" ion-button block (click)="pesan()">
+    Pesan Sekarang
+  </button>
+</ion-content>

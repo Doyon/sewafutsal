@@ -1,0 +1,67 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>Jadwal Pemesanan Lapangan</ion-title>
+      <ion-buttons end (click)="showConfirm()">
+          <button ion-button icon-only>
+            <ion-icon name="exit"></ion-icon>
+          </button>
+        </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="lapanganSeg">
+        <ion-segment-button value="lapangan1">
+          Lapangan A
+        </ion-segment-button>
+        <ion-segment-button value="lapangan2">
+          Lapangan B
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <div [ngSwitch]="lapanganSeg">
+        <ion-list *ngSwitchCase="'lapangan1'">
+            <ion-grid text-center>
+                <ion-row>
+                  <ion-col col-3><b>Pemesan</b></ion-col>
+                  <ion-col col-4><b>Tanggal</b></ion-col>
+                  <ion-col col-3><b>Waktu</b></ion-col>
+                  <ion-col col-2><b>Aksi</b></ion-col>
+                </ion-row>
+                <ion-row *ngFor="let order of orderan">
+                    <ion-col col-3>{{order.pemesan}}</ion-col>
+                    <ion-col col-4>{{order.tanggal}}</ion-col>
+                    <ion-col col-3>{{order.waktu}}</ion-col>
+                    <ion-col col-2>
+                        <ion-icon name="trash" (click)="hapus(order)"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+    
+        <ion-list *ngSwitchCase="'lapangan2'">
+            <ion-grid text-center>
+                <ion-row>
+                  <ion-col col-3><b>Pemesan</b></ion-col>
+                  <ion-col col-4><b>Tanggal</b></ion-col>
+                  <ion-col col-3><b>Waktu</b></ion-col>
+                  <ion-col col-2><b>Aksi</b></ion-col>
+                </ion-row>
+                <ion-row *ngFor="let order2 of orderan2">
+                    <ion-col col-3>{{order2.pemesan}}</ion-col>
+                    <ion-col col-4>{{order2.tanggal}}</ion-col>
+                    <ion-col col-3>{{order2.waktu}}</ion-col>
+                    <ion-col col-2>
+                        <ion-icon name="trash" (click)="hapus2(order2)"></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+    
+      </div>
+</ion-content>
